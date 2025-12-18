@@ -1,0 +1,355 @@
+{
+  "consumer": {
+    "name": "cat-consumer"
+  },
+  "interactions": [
+    {
+      "description": "A cat request",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "the cat exists",
+          "params": {
+            "id": 1,
+            "name": "Junin"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/cats/1"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "age": 3,
+            "id": 1,
+            "name": "Junin"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.age": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    },
+    {
+      "description": "A cats list request",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "cats exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/cats"
+      },
+      "response": {
+        "body": {
+          "content": [
+            {
+              "age": 3,
+              "id": 1,
+              "name": "Junin"
+            },
+            {
+              "age": 5,
+              "id": 2,
+              "name": "Katara"
+            }
+          ],
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$[0].age": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$[0].id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$[0].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[1].age": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$[1].id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$[1].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    },
+    {
+      "description": "A create cat request",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "can create a cat"
+        }
+      ],
+      "request": {
+        "body": {
+          "content": {
+            "age": 5,
+            "id": 11,
+            "name": "Katara"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "method": "POST",
+        "path": "/cats"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "age": 5,
+            "id": 11,
+            "name": "Katara"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.age": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 201
+      },
+      "type": "Synchronous/HTTP"
+    },
+    {
+      "description": "A delete cat request",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "can delete a cat",
+          "params": {
+            "id": 3
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "path": "/cats/3"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "message": "Cat Deleted Successfully"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.message": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 202
+      },
+      "type": "Synchronous/HTTP"
+    },
+    {
+      "description": "An update cat request",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "can update a cat",
+          "params": {
+            "id": 7
+          }
+        }
+      ],
+      "request": {
+        "body": {
+          "content": {
+            "age": 10,
+            "name": "Aang"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "method": "PUT",
+        "path": "/cats/7"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "age": 10,
+            "name": "Aang"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.age": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 201
+      },
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.28",
+      "models": "1.3.5"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "cat-provider"
+  }
+}

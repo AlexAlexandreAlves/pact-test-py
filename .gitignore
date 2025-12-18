@@ -1,0 +1,4 @@
+bin
+lib
+__pycache__
+pact-test-venv
