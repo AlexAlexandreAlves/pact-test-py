@@ -24,7 +24,7 @@ This repository aims to demonstrate the implementation of contract tests using [
 ```bash
 
 ### Cloning the repository
-git clone https://github.com/your-user/repo-here.git
+git clone https://github.com/AlexAlexandreAlves/pact-test-py.git
 
 ### Run through the venv (virtual environment), for this, you need to create and activate it first
 python3 -m venv {$name}
